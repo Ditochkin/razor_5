@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace RazorPagesGeneral.Pages
 {
+    [IgnoreAntiforgeryToken]
     public class contactModel : PageModel
     {
         private readonly IContactsService contactsService;
@@ -16,7 +17,7 @@ namespace RazorPagesGeneral.Pages
             this.contactsService = service;
         }
 
-        public void OnPost()
+        public IActionResult OnPost()
         {
             var newContact = new Contact(Request.Form["first_name"],
                                          Request.Form["last_name"],
@@ -27,6 +28,8 @@ namespace RazorPagesGeneral.Pages
                                          Request.Form["comments"]);
 
             contactsService.writeContact(newContact);
+
+            return Content("Done!");
         }
 
         public void OnGet()
