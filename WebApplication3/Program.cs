@@ -113,10 +113,7 @@ namespace RazorPagesGeneral
     {
         public void writeContact(Contact contact)
         {
-            var config = new CsvConfiguration(CultureInfo.InvariantCulture)
-            {
-                HasHeaderRecord = false,
-            };
+            var config = new CsvConfiguration(CultureInfo.InvariantCulture){};
 
             String contactFile = @"storage\contacts.csv";
             using (FileStream stream = File.Open(contactFile, FileMode.Append))

@@ -29,7 +29,7 @@ namespace RazorPagesGeneral.Pages
 
             contactsService.writeContact(newContact);
 
-            return Content("Done!");
+            return Content("Form was sent!");
         }
 
         public void OnGet()
